@@ -1,0 +1,10 @@
+const facebookRender={isFacebookApp:function(){var userAgent=navigator.userAgent||navigator.vendor||window.opera;return(userAgent.indexOf("FBAN")>-1)||(userAgent.indexOf("FBAV")>-1)||(userAgent.indexOf("Instagram")>-1);},isAndroid:function(){var userAgent=navigator.userAgent.toLowerCase();return userAgent.match("android");},isSamsung:function(){var userAgent=navigator.userAgent.toLowerCase();return userAgent.match(/samsung|sgh-[i|n|t]|gt-[i|p|n]|sm-[n|p|t|z|g|i|j]|shv-e|sch-[i|j|r|s]|sph-l/i);},getMobileDevicePixelRatio:function(){var mediaQuery;if(window.matchMedia){mediaQuery="(-webkit-min-device-pixel-ratio: 1.5),\
+            (min-resolution: 1.5dppx)";if(window.matchMedia(mediaQuery).matches){return 1.5;}
+mediaQuery="(-webkit-min-device-pixel-ratio: 2.75),\
+            (min-resolution: 2.75dppx)";if(window.matchMedia(mediaQuery).matches){return 2.75;}
+mediaQuery="(-webkit-min-device-pixel-ratio: 2),\
+            (min-resolution: 2dppx)";if(window.matchMedia(mediaQuery).matches){return 2;}
+mediaQuery="(-webkit-min-device-pixel-ratio: 0.75),\
+            (min-resolution: 0.75dppx)";if(window.matchMedia(mediaQuery).matches){return 0.7;}}else{return 1;}},adjustFontSizeOnAndroidDeviceInFacebookBrowser:function(){if(this.isFacebookApp()){if(this.isAndroid()){clientWidth=window.clientWidth;clientHeight=window.clientHeight;pixelDensity=window.devicePixelRatio
+if(this.isSamsung()){clientWidth=window.screen.width-5;clientHeight=window.screen.height;pixelDensity=this.getMobileDevicePixelRatio();}
+document.querySelectorAll(".widget").forEach((element,index)=>{var size=window.getComputedStyle(element,null).getPropertyValue('font-size');var fontSize=parseFloat(size);var newsize=pixelDensity*fontSize*clientWidth/clientHeight+'px';return element.style.fontSize=newsize;});}}},init:function(){facebookRender.adjustFontSizeOnAndroidDeviceInFacebookBrowser();}};window.addEventListener('load',function(){facebookRender.init()});

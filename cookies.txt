@@ -1,0 +1,6 @@
+# HTTrack Website Copier Cookie File
+# This file format is compatible with Netscape cookies
+www.mulhernamoda.online	TRUE	/beautyderm	FALSE	1999999999	stg-tracker	deleted
+.assets-landingi.com	TRUE	/	FALSE	1999999999	__cfduid	d853de8b2a32be6d0d2aeb534638069c01619894824
+styles.assets-landingi.com	TRUE	/	FALSE	1999999999	SameSite	Lax
+
